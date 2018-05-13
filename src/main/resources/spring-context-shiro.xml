@@ -15,6 +15,7 @@
 		<constructor-arg>
 			<value>
 				${frontPath}/** = anon
+				${dataApiPath}/** = anon
 				/static/** = anon
 				/userfiles/** = anon
 				${adminPath}/cas = cas

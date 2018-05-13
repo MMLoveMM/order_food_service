@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(value = "${frontPath}/order")
-public class OrderController extends BaseController {
-    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
+public class OrderPubApiController extends BaseController {
+    private static final Logger logger = LoggerFactory.getLogger(OrderPubApiController.class);
 
-    @RequestMapping(value = "/test")
     @ResponseBody
+    @RequestMapping(value = "/test")
     public String test() {
         logger.info("test");
 

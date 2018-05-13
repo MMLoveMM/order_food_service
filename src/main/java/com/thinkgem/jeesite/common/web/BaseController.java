@@ -53,6 +53,12 @@ public abstract class BaseController {
 	 */
 	@Value("${frontPath}")
 	protected String frontPath;
+
+	/**
+	 * 数据请求接口路径
+	 */
+	@Value("/d")
+	protected String dataApiPath;
 	
 	/**
 	 * 前端URL后缀
