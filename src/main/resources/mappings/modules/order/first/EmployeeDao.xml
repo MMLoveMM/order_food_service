@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.psimm.order.modules.order.dao.first.EmployeeDao">
+    
+	<sql id="employeeColumns">
+		a.id AS "id",
+		a.user_name AS "userName"
+	</sql>
+	
+	<sql id="employeeJoins">
+	</sql>
+    
+	<select id="get" resultType="Employee">
+		SELECT 
+			<include refid="employeeColumns"/>
+		FROM employee a
+		<include refid="employeeJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="Employee">
+		SELECT 
+			<include refid="employeeColumns"/>
+		FROM employee a
+		<include refid="employeeJoins"/>
+		<where>
+			
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="Employee">
+		SELECT 
+			<include refid="employeeColumns"/>
+		FROM employee a
+		<include refid="employeeJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO employee(
+			id,
+			user_name
+		) VALUES (
+			#{id},
+			#{userName}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE employee SET 	
+			user_name = #{userName}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM employee
+		WHERE id = #{id}
+	</update>
+
+	<select id="getEmployeeByName" parameterType="java.lang.String" resultType="cn.psimm.order.modules.order.entity.first.Employee">
+		SELECT * FROM employee e WHERE e.user_name = #{name}
+	</select>
+	
+</mapper>
